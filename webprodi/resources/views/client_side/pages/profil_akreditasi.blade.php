@@ -16,24 +16,28 @@
             <div class="col-lg-8">
                 <div class="featured-post mb-12 card">
                     <div class="newsdesks">
-                        <p class="text-dark">
-                                        <b>{!! $profil_akreditasi->nm_ps !!}</b>
-                                        <br>
-                                        telah terakreditasi <b>"{!! $profil_akreditasi->akre !!}"</b>
-                                        <br>
-                                        oleh Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT)
-                        </p>
-                        <hr>
-                        <p class="text-dark">
-                                        <i>Berdasarkan SK Nomor</i>
-                                        <br>
-                                        <b>{!! $profil_akreditasi->no_sk !!}</b>
-                                        <br>
-                                        <br>
-                                        <a href="{{ asset('/assets/images/file/sertifikat-akreditasi/akreditasi.jpeg') }}"
-                                            download="akreditasi.jpg"
-                                            class="btn btn-success">Download Sertifikat Akreditasi</a>
-                        </p>
+                        @if ($profil_akreditasi)
+                            <p class="text-dark">
+                                            <b>{!! $profil_akreditasi->nm_ps !!}</b>
+                                            <br>
+                                            telah terakreditasi <b>"{!! $profil_akreditasi->akre !!}"</b>
+                                            <br>
+                                            oleh Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT)
+                            </p>
+                            <hr>
+                            <p class="text-dark">
+                                            <i>Berdasarkan SK Nomor</i>
+                                            <br>
+                                            <b>{!! $profil_akreditasi->no_sk !!}</b>
+                                            <br>
+                                            <br>
+                                            <a href="{{ asset('/assets/images/file/sertifikat-akreditasi/akreditasi.jpeg') }}"
+                                                download="akreditasi.jpg"
+                                                class="btn btn-success">Download Sertifikat Akreditasi</a>
+                            </p>
+                        @else
+                            <p class="text-dark">Data akreditasi belum tersedia.</p>
+                        @endif
 
                     </div>
                 </div>

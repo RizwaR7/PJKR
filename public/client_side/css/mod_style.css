@@ -120,3 +120,248 @@
     box-shadow: 1px 5px 37px 0px #00000035;
     transform: scale(1.01);
 }
+
+.home-news-section .heading-decorated {
+    text-align: left;
+}
+
+.home-news-section {
+    background: #f6f8fb;
+    border-radius: 24px;
+}
+
+.home-news-section .card {
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.home-featured-card {
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-featured-card a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+.home-featured-media {
+    position: relative;
+    height: 320px;
+}
+
+.home-featured-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0) 35%, rgba(15, 23, 42, 0.35) 100%);
+}
+
+.home-featured-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-media-badges {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.home-featured-body {
+    padding: 16px;
+    background: #fff;
+}
+
+.home-featured-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.home-meta {
+    color: #6c757d;
+    font-size: 0.85rem;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.home-meta-dot {
+    opacity: 0.7;
+}
+
+.home-list {
+    display: grid;
+    gap: 12px;
+}
+
+.home-list-item {
+    margin-bottom: 12px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-list-link {
+    display: flex;
+    gap: 12px;
+    color: inherit;
+    text-decoration: none;
+    padding: 12px;
+}
+
+.home-list-media {
+    width: 140px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.home-list-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-list-body h6 {
+    margin-bottom: 6px;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.home-excerpt {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.home-news-tabs {
+    text-align: left;
+    padding: 12px;
+}
+
+.home-news-tabs .nav-tabs {
+    border: 0;
+    background: #eef2f7;
+    border-radius: 999px;
+    padding: 6px;
+    gap: 6px;
+}
+
+.home-news-tabs .nav-link {
+    color: #64748b;
+    font-weight: 600;
+    border: 0;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+}
+
+.home-news-tabs .nav-link.active {
+    color: #0f172a;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+}
+
+.home-tab-item {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.home-tab-item:last-child {
+    border-bottom: none;
+}
+
+.home-tab-link {
+    display: flex;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.home-tab-media {
+    width: 72px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.home-tab-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-tab-title {
+    margin: 4px 0 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.home-badges .badge {
+    margin-bottom: 4px;
+}
+
+.home-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f1f5ff, #e8ecf7);
+    color: #6c757d;
+    font-size: 24px;
+}
+
+@media (max-width: 988px) {
+    .home-featured-media {
+        height: 220px;
+    }
+
+    .home-list-link {
+        flex-direction: column;
+    }
+
+    .home-list-media {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+.home-featured-card:hover,
+.home-list-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.14);
+}
+
+.home-tab-item:hover {
+    background: #f8fafc;
+}

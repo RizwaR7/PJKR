@@ -2,8 +2,14 @@
 <html class="wide wow-animation" lang="en">
 
 <head>
-    <link rel="icon" type="image/png"
-        href="{{ asset('assets/images/logo/' . env('PRODI_ID') . '.' . (file_exists(public_path('assets/images/logo/' . env('PRODI_ID') . '.jpg')) ? 'jpg' : (file_exists(public_path('assets/images/logo/' . env('PRODI_ID') . '.jpeg')) ? 'jpeg' : 'png'))) . '?v=' . time() }}">
+    @php
+        $pid_app = env('PRODI_ID');
+        $ext_app = 'png';
+        if(file_exists(public_path('assets/images/logo/' . $pid_app . '.jpg'))) $ext_app = 'jpg';
+        elseif(file_exists(public_path('assets/images/logo/' . $pid_app . '.jpeg'))) $ext_app = 'jpeg';
+        elseif(!file_exists(public_path('assets/images/logo/' . $pid_app . '.png'))) $pid_app = '0';
+    @endphp
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo/' . $pid_app . '.' . $ext_app) }}?v={{ time() }}">
     <!-- Site Title-->
     <title>{{env('PRODI_NAME_ALIAS')}} - UNIVERSITAS PALANGKA RAYA</title>
     <!-- Meta SEO -->
@@ -168,69 +174,45 @@
         }
     </style>
 
+    @stack('styles')
 </head>
 
 <body>
-    <div class="preloader">
-        <div class="cssload-container">
-            <svg class="filter" version="1.1">
-                <defs>
-                    <filter id="gooeyness">
-                        <fegaussianblur in="SourceGraphic" stddeviation="10" result="blur"></fegaussianblur>
-                        <fecolormatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
-                            result="gooeyness"></fecolormatrix>
-                        <fecomposite in="SourceGraphic" in2="gooeyness" operator="atop"></fecomposite>
-                    </filter>
-                </defs>
-            </svg>
-            <div class="dots">
-                <div class="dot mainDot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-            <small>Please wait...</small>
-            <div class="">
-                <div class="card-body">
-                    <small id="motivate" class="motivate badge sm-badge badge-success ">
-                        <?php
-                        $quotes = ['Pastikan anda tersambung pada koneksi internet', 'Pastikan hapus cache browser Anda jika gagal memuat halaman', 'Jika gangguan saat memuat halaman, coba refresh browser', 'Tunggu sampai proses memuat selesai'];
-                        echo $quotes[array_rand($quotes)];
-                        ?>
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     {{-- Content Page --}}
     @yield('content')
 
-    <footer class="footer-corporate bg-gray-darkest">
+    <style>
+        /* Newsup Footer */
+        .newsup-footer { background-color: #15181d; color: #ccc; padding: 60px 0 30px; font-size: 0.9rem; }
+        .newsup-footer h5 { color: #fff; font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; }
+        .newsup-footer a { color: #ccc; text-decoration: none; }
+        .newsup-footer a:hover { color: #1e5dd6; }
+        .newsup-footer-bottom { background-color: #0d0f12; padding: 15px 0; font-size: 0.8rem; text-align: center; color: #888; }
+    </style>
+    <footer class="newsup-footer">
         <div class="container">
-            <div class="footer-corporate__inner">
-                <p class="rights">
-
-                    Develop by
-                    <br>
-                    <a href="https://tik.upr.ac.id">ICT - Palangka Raya University</a>
-                    <br>
-                    <!-- <span><a href="https://upr.ac.id">UPR</a></span><span>&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved by Palangka Raya University -->
-                    All Rights Reserved
-
-                </p>
-                <!-- <ul class="list-inline-xxs">
-                        <li><a class="icon icon-xxs icon-warning fa fa-facebook" href="#"></a></li>
-                        <li><a class="icon icon-xxs icon-warning fa fa-twitter" href="#"></a></li>
-                        <li><a class="icon icon-xxs icon-warning fa fa-google-plus" href="#"></a></li>
-                        <li><a class="icon icon-xxs icon-warning fa fa-vimeo" href="#"></a></li>
-                        <li><a class="icon icon-xxs icon-warning fa fa-youtube" href="#"></a></li>
-                        <li><a class="icon icon-xxs icon-warning fa fa-pinterest" href="#"></a></li>
-                    </ul> -->
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <img width="200px" src="{{ asset('assets/images/logo/' . $pid_app . '.' . $ext_app) }}" alt="Logo" class="mb-3">
+                    <p class="text-muted" style="line-height: 1.6; max-width: 400px;">
+                        Membangun generasi cerdas dan berkarakter unggul di {{env('PRODI_NAME_ALIAS', 'Universitas Palangka Raya')}}.
+                    </p>
+                </div>
+                <div class="col-md-6 mb-4 text-md-right text-left">
+                    <p class="mt-4 pt-4 text-muted">
+                        &copy; {{ date('Y') }} {{env('PRODI_NAME_ALIAS', 'Universitas Palangka Raya')}}.
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
+    <div class="newsup-footer-bottom">
+        <div class="container">
+            Proudly powered by WordPress | Theme: Newsup by Themeansar
+        </div>
+    </div>
 
     <div class="snackbars" id="form-output-global"></div>
 

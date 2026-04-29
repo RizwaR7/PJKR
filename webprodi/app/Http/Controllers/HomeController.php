@@ -41,12 +41,30 @@ class HomeController extends Controller
             ->orderBy('ts', 'desc')
             ->limit(6)
             ->get();
-        $berita = DB::table('berita')
+        $berita_latest = DB::table('berita')
             ->select('judul', 'ts', 'isi', 'id', 'foto_berita', 'counters', DB::raw('"Berita" as jenis'))
             ->where('tampil', 1)
             ->where('id_sms', (int)env('PRODI_ID'))
             ->orderBy('ts', 'desc')
-            ->limit(3)
+            ->limit(6)
+            ->get();
+
+        $berita_popular = DB::table('berita')
+            ->select('judul', 'ts', 'isi', 'id', 'foto_berita', 'counters', DB::raw('"Berita" as jenis'))
+            ->where('tampil', 1)
+            ->where('id_sms', (int)env('PRODI_ID'))
+            ->orderBy('counters', 'desc')
+            ->limit(6)
+            ->get();
+
+        $trending_since = strtotime('-30 days');
+        $berita_trending = DB::table('berita')
+            ->select('judul', 'ts', 'isi', 'id', 'foto_berita', 'counters', DB::raw('"Berita" as jenis'))
+            ->where('tampil', 1)
+            ->where('id_sms', (int)env('PRODI_ID'))
+            ->where('ts', '>=', $trending_since)
+            ->orderBy('counters', 'desc')
+            ->limit(6)
             ->get();
         $get_pimpinan = Pimpinan::where('id_sms', env('PRODI_ID'))
             ->where('tampil', 1)
@@ -82,7 +100,9 @@ class HomeController extends Controller
             'fakultas',
             'menus',
             'agenda',
-            'berita',
+            'berita_latest',
+            'berita_popular',
+            'berita_trending',
             'get_pimpinan',
             'get_banner',
             'footersgambar',
