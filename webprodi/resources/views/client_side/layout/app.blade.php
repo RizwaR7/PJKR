@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="id">
 
 <head>
     @php
@@ -34,15 +34,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
 
-    <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css"
-        href="//fonts.googleapis.com/css?family=Fira+Sans:300,600,800,800i%7COpen+Sans:300,400,400i" />
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('client_side/css/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ asset('client_side/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('client_side/css/mod_style.css') . '?v=' . time() }}" />
     <link rel="stylesheet" href="{{ asset('client_side/css/fonts.css') }}" />
 
     <style>
+        *, *::before, *::after {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #f8fafc;
+            color: #1a1a2e;
+            top: 0px !important;
+            overflow-x: hidden;
+        }
+        .VIpgJd-ZVi9od-ORHb-OEVmcd { display: none; }
         .ie-panel {
             display: none;
             background: #212121;
@@ -53,125 +65,7 @@
             position: relative;
             z-index: 1;
         }
-
-        html.ie-10 .ie-panel,
-        html.lt-ie-10 .ie-panel {
-            display: block;
-        }
-
-        .banner-img {
-            width: 100%;
-            /* Gambar memenuhi lebar penuh */
-            height: 200px;
-            /* Atur tinggi agar menyerupai banner */
-            object-fit: cover;
-            /* Pangkas gambar agar sesuai ukuran tanpa distorsi */
-            margin-top: 0;
-            /* Menghapus margin atas */
-            margin-bottom: 0;
-            /* Menghapus margin bawah */
-            border-radius: 5px;
-            /* Tambahkan sudut melengkung jika diinginkan */
-        }
-    </style>
-
-    <!-- IMG -->
-    <style>
-        /* Default style for all screens */
-        img.responsive-image {
-            width: 40%;
-            height: auto;
-        }
-
-        /* For mobile screens (max width: 768px) */
-        @media (max-width: 768px) {
-            img.responsive-image {
-                width: 25%;
-                /* Adjust width for mobile */
-                height: auto;
-                /* Maintain aspect ratio */
-            }
-        }
-    </style>
-
-    <style>
-        @media (max-width: 991.98px) {
-            .rd-navbar-wrap {
-                margin-top: 0 !important;
-            }
-        }
-    </style>
-
-    <!-- Add this CSS for hover effect -->
-    <style>
-        .arrow-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover .arrow-icon {
-            transform: translateX(5px);
-        }
-    </style>
-
-    <style>
-        .map-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* Rasio 16:9 agar responsif */
-            height: 0;
-            overflow: hidden;
-        }
-
-        .map-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    </style>
-
-    <!-- video -->
-    <style>
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
-            border-radius: 25px;
-            box-shadow: 9px 6px 20px 0px rgba(0, 0, 0, 0.5);
-        }
-
-        iframe,
-        video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 25px;
-        }
-
-        .unsupported-message {
-            color: red;
-            font-size: 18px;
-            text-align: center;
-            margin-top: 10px;
-        }
-    </style>
-
-    <!-- Add this CSS for hover effect -->
-    <style>
-        .arrow-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover .arrow-icon {
-            transform: translateX(5px);
-        }
+        html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
     </style>
 
     @stack('styles')
@@ -179,57 +73,147 @@
 
 <body>
 
-
     {{-- Content Page --}}
     @yield('content')
 
-    <style>
-        /* Newsup Footer */
-        .newsup-footer { background-color: #15181d; color: #ccc; padding: 60px 0 30px; font-size: 0.9rem; }
-        .newsup-footer h5 { color: #fff; font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; }
-        .newsup-footer a { color: #ccc; text-decoration: none; }
-        .newsup-footer a:hover { color: #1e5dd6; }
-        .newsup-footer-bottom { background-color: #0d0f12; padding: 15px 0; font-size: 0.8rem; text-align: center; color: #888; }
-    </style>
-    <footer class="newsup-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <img width="200px" src="{{ asset('assets/images/logo/' . $pid_app . '.' . $ext_app) }}" alt="Logo" class="mb-3">
-                    <p class="text-muted" style="line-height: 1.6; max-width: 400px;">
-                        Membangun generasi cerdas dan berkarakter unggul di {{env('PRODI_NAME_ALIAS', 'Universitas Palangka Raya')}}.
-                    </p>
-                </div>
-                <div class="col-md-6 mb-4 text-md-right text-left">
-                    <p class="mt-4 pt-4 text-muted">
-                        &copy; {{ date('Y') }} {{env('PRODI_NAME_ALIAS', 'Universitas Palangka Raya')}}.
-                    </p>
+    <!-- ===== MODERN FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="footer-brand">
+                            <img width="60" src="{{ asset('assets/images/logo/' . $pid_app . '.' . $ext_app) }}" alt="Logo" class="mb-3">
+                            <h5>{{ env('PRODI_NAME', 'Teknik Informatika') }}</h5>
+                            <p>{{ env('FAKULTAS_NAME', 'Fakultas Teknik') }} — Universitas Palangka Raya</p>
+                        </div>
+                        <p class="footer-desc">Membangun generasi cerdas dan berkarakter unggul melalui pendidikan, penelitian, dan pengabdian kepada masyarakat.</p>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <h6 class="footer-heading">Navigasi</h6>
+                        <ul class="footer-links">
+                            <li><a href="/">Beranda</a></li>
+                            <li><a href="/profil/sejarah">Sejarah</a></li>
+                            <li><a href="/profil/visi-misi">Visi & Misi</a></li>
+                            <li><a href="/profil/akreditasi">Akreditasi</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h6 class="footer-heading">Informasi</h6>
+                        <ul class="footer-links">
+                            <li><a href="/berita">Berita</a></li>
+                            <li><a href="/agenda">Agenda</a></li>
+                            <li><a href="/pengumuman">Pengumuman</a></li>
+                            <li><a href="/dosen">Daftar Dosen</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h6 class="footer-heading">Kontak</h6>
+                        <ul class="footer-contact">
+                            <li><i class="fa fa-map-marker"></i> Jl. Yos Sudarso, Palangka Raya, Kalimantan Tengah</li>
+                            <li><i class="fa fa-envelope"></i> info@upr.ac.id</li>
+                            <li><i class="fa fa-globe"></i> www.upr.ac.id</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <div class="newsup-footer-bottom">
-        <div class="container">
-            Proudly powered by WordPress | Theme: Newsup by Themeansar
+        <div class="footer-bottom">
+            <div class="container text-center">
+                &copy; {{ date('Y') }} {{ env('PRODI_NAME', 'Teknik Informatika') }} — Universitas Palangka Raya. All rights reserved.
+            </div>
         </div>
-    </div>
+    </footer>
+
+    <style>
+    .site-footer {
+        background: #0d1117;
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+    }
+    .footer-main { padding: 60px 0 30px; }
+    .footer-brand h5 {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 2px;
+    }
+    .footer-brand p {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.8rem;
+        margin-bottom: 16px;
+    }
+    .footer-desc {
+        color: rgba(255,255,255,0.5);
+        line-height: 1.7;
+        font-size: 0.85rem;
+    }
+    .footer-heading {
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    .footer-heading::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background: #0f7636;
+    }
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+        color: rgba(255,255,255,0.6);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+    }
+    .footer-links a:hover {
+        color: #ffc107;
+        padding-left: 6px;
+    }
+    .footer-contact {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .footer-contact li {
+        margin-bottom: 14px;
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.5);
+        line-height: 1.5;
+    }
+    .footer-contact i {
+        color: #0f7636;
+        width: 18px;
+        margin-right: 8px;
+    }
+    .footer-bottom {
+        background: rgba(0,0,0,0.3);
+        padding: 16px 0;
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.35);
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    </style>
 
     <div class="snackbars" id="form-output-global"></div>
 
     {{-- Default JS --}}
-    <style>
-        .VIpgJd-ZVi9od-ORHb-OEVmcd {
-            display: none;
-        }
-
-        body {
-            top: 0px !important;
-        }
-    </style>
     <script src="{{ asset('client_side/js/core.min.js') }}"></script>
     <script src="{{ asset('client_side/js/script.js') }}"></script>
     <script src="{{ asset('client_side/js/script.min.js') }}"></script>
-    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
     {{-- End Default JS --}}
 </body>
